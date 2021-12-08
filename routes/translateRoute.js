@@ -3,6 +3,6 @@ const controller = require('../controllers/translateController');
 
 const router = express.Router();
 
-router.get('/', controller.translateText);
+router.post('/', controller.translateText);
 
 module.exports = router;

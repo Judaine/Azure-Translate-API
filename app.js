@@ -2,7 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 
-const translateRoute = require('./routes/translate');
+const translateRoute = require('./routes/translateRoute');
 
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
@@ -35,6 +35,7 @@ let host = 'localhost';
 app.use(morgan('tiny'));
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(specs));
 app.use(cors());
+app.use(express.json());
 
 //Router for /translate
 app.use('/translate', translateRoute);
