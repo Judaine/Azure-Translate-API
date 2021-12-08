@@ -4,27 +4,27 @@ const cors = require('cors');
 
 const translateRoute = require('./routes/translateRoute');
 
-const swaggerJsdoc = require('swagger-jsdoc');
+const expressJSDocSwagger = require('express-jsdoc-swagger');
 const swaggerUi = require('swagger-ui-express');
 
 //Initialize Swagger options
 const options = {
-    swaggerDefinition: {
-        info: {
-            title: 'Translate API',
-            version: '1.0.0',
-            description: 'Front-end API for Azure Translate Cognitive Service'
-        },
-        host: 'localhost:3000',
-        basePath: '/',
+    info: {
+      version: '1.0.0',
+      title: 'Translate API'
     },
-    apis: ['app.js']
-};
-
-const specs = swaggerJsdoc(options);
+    baseDir: __dirname,
+    // Glob pattern to find your jsdoc files (multiple patterns can be added in an array)
+    filesPattern: './routes/translateRoute.js',
+    swaggerUIPath: '/api-docs'
+  };
 
 //Create application
 const app = express();
+
+//Initialitze JS-Doc
+expressJSDocSwagger(app)(options);
+
 
 //Configure application
 let port = 3000;
@@ -33,12 +33,13 @@ let host = 'localhost';
 
 //Mount middleware
 app.use(morgan('tiny'));
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(specs));
 app.use(cors());
 app.use(express.json());
 
+
 //Router for /translate
 app.use('/translate', translateRoute);
+
 
 //Route/URL not found
 app.use((req, res, next) => {
