@@ -5,4 +5,6 @@ const router = express.Router();
 
 router.post('/', controller.translateText);
 
+router.get('/languages', controller.languages);
+
 module.exports = router;

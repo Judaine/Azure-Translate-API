@@ -18,7 +18,7 @@ const options = {
         host: 'localhost:3000',
         basePath: '/',
     },
-    apis: ['./test.js']
+    apis: ['app.js']
 };
 
 const specs = swaggerJsdoc(options);
