@@ -1,21 +1,25 @@
+//Node Modules
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
-
-const translateRoute = require('./routes/translateRoute');
-
 const expressJSDocSwagger = require('express-jsdoc-swagger');
 const swaggerUi = require('swagger-ui-express');
+
+//Routes for API calls
+const translateRoute = require('./routes/translateRoute');
+const dictionaryRoute = require('./routes/dictionaryRoute');
+
 
 //Initialize Swagger options
 const options = {
     info: {
       version: '1.0.0',
-      title: 'Translate API'
+      title: 'Translate API',
+      description: 'Front-end API for Microsoft Azure\'s Translation Cognitive Service: ' + "https://azure.microsoft.com/en-us/services/cognitive-services/translator/"
     },
     baseDir: __dirname,
     // Glob pattern to find your jsdoc files (multiple patterns can be added in an array)
-    filesPattern: './routes/translateRoute.js',
+    filesPattern: './routes/**.js',
     swaggerUIPath: '/api-docs'
   };
 
@@ -39,6 +43,9 @@ app.use(express.json());
 
 //Router for /translate
 app.use('/translate', translateRoute);
+
+//Router for /dictionary
+app.use('/dictionary', dictionaryRoute);
 
 
 //Route/URL not found

@@ -1,7 +1,7 @@
 const { v4: uuidv4 } = require('uuid');
 const axios = require('axios');
 
-var subscriptionKey = "xxxx";
+var subscriptionKey = "xxxxx";
 
 exports.translateText = (req, res) => {
     var endpoint = "https://api.cognitive.microsofttranslator.com";
