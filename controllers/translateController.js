@@ -4,7 +4,10 @@ const axios = require('axios');
 exports.translateText = (req, res, next) => {
     var subscriptionKey = "xxxx";
     var endpoint = "https://api.cognitive.microsofttranslator.com";
+
     var translateText = req.body.data;
+    var languageFrom = req.body.from;
+    var languageTo = req.body.to;
     // Add your location, also known as region. The default is global.
     // This is required if using a Cognitive Services resource.
     var location = "eastus2";
@@ -21,8 +24,8 @@ exports.translateText = (req, res, next) => {
         },
         params: {
             'api-version': '3.0',
-            'from': 'en',
-            'to': ['de', 'it']
+            'from': languageFrom,
+            'to': languageTo
         },
         data: [{
             'text': translateText
@@ -30,7 +33,8 @@ exports.translateText = (req, res, next) => {
         responseType: 'json'
     }).then(response => {
         var sendData = JSON.stringify(response.data[0].translations[0].text, null, 4);
-        next(sendData);
+        res.status = 200;
+        return res.json(sendData)
         
     })
 };
