@@ -122,7 +122,9 @@ exports.translateToFromParams = (req, res, next) => {
         return res.send(sendData)
         
     })
-    .catch(err => next(err));
+    .catch(err => {
+        res.send(err.response.data);
+    });
 };
 
 exports.translateToParam = (req, res, next) => {

@@ -21,25 +21,10 @@ const router = express.Router();
  */
 router.post('/', validateBody, validateResult, controller.translateText);
 
-/**
- * GET /translate/to/{languageTo}/{text}
- * @tags Translate
- * @summary Translates texts by using parameters instead of JSON body. Auto-detects language to translate from.
- * @param {string} text.query.required - Text to translate
- * @param {string} to.query.required - Language to translate to
- * @return 200 - success response - application/json
- */
+//Swagger JSDoc does not support multiple parameters to be passed in path as such.
 router.get('/to/:languageTo/:text', controller.translateToParam);
 
-/**
- * GET /translate/from/{languageFrom}/to/{languageTo}/{text}
- * @tags Translate
- * @summary Translates texts by using parameters instead of JSON body.
- * @param {string} text.query.required - Text to translate
- * @param {string} from.query.required - Language to translate from
- * @param {string} to.query.required - Language to translate to
- * @return 200 - success response - application/json
- */
+//Swagger JSDoc does not support multiple parameters to be passed in path as such.
 router.get('/from/:languageFrom/to/:languageTo/:text', controller.translateToFromParams);
 
 /**

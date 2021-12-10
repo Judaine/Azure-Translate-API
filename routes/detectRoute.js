@@ -11,18 +11,10 @@ const router = express.Router();
  */
 
 /**
- * Example Detect JSON object with translation
- * @typedef {object} DetectTranslateSchema
- * @property {string} text - Text to be translated.
- * @property {string} to - Translate to language.
- */
-
-/**
  * POST /detect
  * @tags Detect
- * @summary Detects the langauge of text sent in JSON body, and optionally translate the text.
+ * @summary Detects the language of text sent in JSON body.
  * @param {DetectSchema} request.body.required - Detect JSON Object - application/json
- * @param {DetectTranslateSchema} request.body.required - Detect JSON Object with translation - application/json
  * @return 200 - success response - application/json
  */
  router.post('/', validateBody, controller.detectLanguage);

@@ -17,9 +17,8 @@ const options = {
       title: 'transl8 API',
       description: 'Front-end API for Microsoft Azure\'s Translation Cognitive Service: ' + "https://azure.microsoft.com/en-us/services/cognitive-services/translator/",
       contact: {
-        name: 'David Jordan',
-        url: 'http://github.com/Judaine',
-        email: 'djorda38@uncc.edu',
+        name: 'Github and Documentation',
+        url: 'https://github.com/Judaine/Azure-Translate-API',
       },
     },
     baseDir: __dirname,
@@ -68,8 +67,10 @@ app.use((err, req, res, next)=>{
   if(!err.status) {
       let reqErr = new Error(err.response.data.message)
       reqErr.status = 400
+      res.send(reqErr);
+  } else {
+    res.send(err);
   }
-  res.send(reqErr);
 });
 
 //Start API
