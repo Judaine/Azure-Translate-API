@@ -1,6 +1,6 @@
 # **transl8 API**
 
-[Swagger Documentation & Playground](http://localhost:3000/api-docs)
+[Swagger Documentation & Playground](http://147.182.164.180:3000/api-docs)
 
 - [Introduction](#introduction)
 - [Getting Started](#getting-started)
@@ -128,7 +128,7 @@ transl8 is an open-source translation API that leverages [Microsoft Azure's Tran
 
 ## **API Functions**
 ### **Translate**
-- Endpoint: http://localhost:3000/translate  
+- Endpoint: http://147.182.164.180:3000/translate  
 - Method: POST
   
 Translates text to the target language.
@@ -157,15 +157,15 @@ Response (application/json):
 ```
 
 ### **Translate (with parameters)**
-- Endpoint 1: http://localhost:3000/translate/to/{languageTo}/{text}
-- Endpoint 2: http://localhost:3000/translate/from/{languageFrom}/to/{languageTo}/{text}
+- Endpoint 1: http://147.182.164.180:3000/translate/to/{languageTo}/{text}
+- Endpoint 2: http://147.182.164.180:3000/translate/from/{languageFrom}/to/{languageTo}/{text}
 - Method: GET
 
 Translating made even easier - instead of sending a response body, utilize the parameters to get a quick and hassle-free response. Test it right in your browser!
 
 Example:
 ```
-http://localhost:3000/translate/to/es/Hello World!
+http://147.182.164.180:3000/translate/to/es/Hello World!
 ```
 
 Response (application/json):
@@ -177,7 +177,7 @@ Response (application/json):
 ```
 
 ### **Translatable Languages**
-- Endpoint: http://localhost:3000/translate/languages
+- Endpoint: http://147.182.164.180:3000/translate/languages
 - Method: GET
 
 Returns all available languages that can be translated to and from.  
@@ -186,7 +186,7 @@ Returns all available languages that can be translated to and from.
 
 Example:
 ```
-GET http://localhost:3000/translate/languages
+GET http://147.182.164.180:3000/translate/languages
 ```
 
 Response: 
@@ -217,7 +217,7 @@ Response:
 ```
 
 ### **Dictionary**
-- Endpoint: http://localhost:3000/dictionary/lookup
+- Endpoint: http://147.182.164.180:3000/dictionary/lookup
 - Method: POST
 
 Returns a list of possible translations for the requested word.  Includes possible meanings of the "from" language, and the part of speech the word is in that language.
@@ -289,7 +289,7 @@ Response (application/json):
 ```
 
 ### **Dictionary Examples**
-- Endpoint: http://localhost:3000/dictionary/examples
+- Endpoint: http://147.182.164.180:3000/dictionary/examples
 - Method: POST
 
 Looks up examples of the use of the original and translated word in context.
@@ -332,7 +332,7 @@ Response (application/json):
 ```
 
 ### **Detect**
-- Endpoint: http://localhost:3000/detect
+- Endpoint: http://147.182.164.180:3000/detect
 - Method: POST
 
 Analyzes the word sent and returns the language it is from, along with a confidence float value from 0 (unsure) to 1 (sure). Also sends if the language is able to be translated to and from.
