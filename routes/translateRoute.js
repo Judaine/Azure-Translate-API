@@ -22,7 +22,7 @@ const router = express.Router();
 router.post('/', validateBody, controller.translateText);
 
 /**
- * GET /translate/to/:languageTo/:text
+ * GET /translate/to/{languageTo}/{text}
  * @tags Translate
  * @summary Translates texts by using parameters instead of JSON body. Auto-detects language to translate from.
  * @param {string} text.query.required - Text to translate
@@ -32,7 +32,7 @@ router.post('/', validateBody, controller.translateText);
 router.get('/to/:languageTo/:text', controller.translateToParam);
 
 /**
- * GET /translate/from/:languageFrom/to/:languageTo/:text
+ * GET /translate/from/{languageFrom}/to/{languageTo}/{text}
  * @tags Translate
  * @summary Translates texts by using parameters instead of JSON body.
  * @param {string} text.query.required - Text to translate
