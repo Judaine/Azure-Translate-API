@@ -7,6 +7,7 @@ const expressJSDocSwagger = require('express-jsdoc-swagger');
 //Routes for API calls
 const translateRoute = require('./routes/translateRoute');
 const dictionaryRoute = require('./routes/dictionaryRoute');
+const detectRoute = require('./routes/detectRoute');
 
 
 //Initialize Swagger options
@@ -45,6 +46,9 @@ app.use('/translate', translateRoute);
 
 //Router for /dictionary
 app.use('/dictionary', dictionaryRoute);
+
+//Router for /detect
+app.use('/detect', detectRoute);
 
 
 //Route/URL not found
