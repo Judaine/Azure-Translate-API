@@ -2,10 +2,10 @@
 
 [Swagger Documentation & Playground](http://localhost:3000/api-docs)
 
-[Introduction](#introduction)
-[Getting Started](#getting-started)
-[API Functions](#api-functions)
-[Error Codes](#error-codes)
+- [Introduction](#introduction)
+- [Getting Started](#getting-started)
+- [API Functions](#api-functions)
+- [Error Codes](#error-codes)
 
 ## **Introduction**
 transl8 is an open-source translation API that leverages [Microsoft Azure's Translator Cognitive Service](https://azure.microsoft.com/en-us/services/cognitive-services/translator), *but made easy*.
