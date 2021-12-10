@@ -36,7 +36,7 @@ expressJSDocSwagger(app)(options);
 
 //Configure application
 let port = 3000;
-let host = 'localhost';
+let host = '147.182.164.180';
 
 
 //Mount middleware
