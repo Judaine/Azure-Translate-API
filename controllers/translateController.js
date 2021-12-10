@@ -1,6 +1,6 @@
 const { v4: uuidv4 } = require('uuid');
 const axios = require('axios');
-const subKey = require('../subKey/key');
+const {subKey} = require('../subKey/key');
 
 var subscriptionKey = subKey;
 

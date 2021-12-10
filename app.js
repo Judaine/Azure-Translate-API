@@ -14,8 +14,13 @@ const detectRoute = require('./routes/detectRoute');
 const options = {
     info: {
       version: '1.0.0',
-      title: 'Translate API',
-      description: 'Front-end API for Microsoft Azure\'s Translation Cognitive Service: ' + "https://azure.microsoft.com/en-us/services/cognitive-services/translator/"
+      title: 'transl8 API',
+      description: 'Front-end API for Microsoft Azure\'s Translation Cognitive Service: ' + "https://azure.microsoft.com/en-us/services/cognitive-services/translator/",
+      contact: {
+        name: 'David Jordan',
+        url: 'http://github.com/Judaine',
+        email: 'djorda38@uncc.edu',
+      },
     },
     baseDir: __dirname,
     // Glob pattern to find your jsdoc files (multiple patterns can be added in an array)
