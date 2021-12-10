@@ -1,7 +1,9 @@
 const express = require('express');
 const controller = require('../controllers/translateController');
+const {validateBody} = require('../middleware/validator');
 
 const router = express.Router();
+
 /**
  * Example Translation JSON object
  * @typedef {object} TranslateSchema
@@ -13,11 +15,32 @@ const router = express.Router();
 /**
  * POST /translate
  * @tags Translate
- * @summary Translates texts.
+ * @summary Translates texts by sending JSON body with the text, language to translate to, and optionally the langauge to translate from.
  * @param {TranslateSchema} request.body.required - Translation JSON Object - application/json
  * @return 200 - success response - application/json
  */
-router.post('/', controller.translateText);
+router.post('/', validateBody, controller.translateText);
+
+/**
+ * GET /translate/to/:languageTo/:text
+ * @tags Translate
+ * @summary Translates texts by using parameters instead of JSON body. Auto-detects language to translate from.
+ * @param {string} text.query.required - Text to translate
+ * @param {string} to.query.required - Language to translate to
+ * @return 200 - success response - application/json
+ */
+router.get('/to/:languageTo/:text', controller.translateToParam);
+
+/**
+ * GET /translate/from/:languageFrom/to/:languageTo/:text
+ * @tags Translate
+ * @summary Translates texts by using parameters instead of JSON body.
+ * @param {string} text.query.required - Text to translate
+ * @param {string} from.query.required - Language to translate from
+ * @param {string} to.query.required - Language to translate to
+ * @return 200 - success response - application/json
+ */
+router.get('/from/:languageFrom/to/:languageTo/:text', controller.translateToFromParams);
 
 /**
  * GET /translate/languages

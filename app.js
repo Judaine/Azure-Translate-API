@@ -3,7 +3,6 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const expressJSDocSwagger = require('express-jsdoc-swagger');
-const swaggerUi = require('swagger-ui-express');
 
 //Routes for API calls
 const translateRoute = require('./routes/translateRoute');
@@ -55,6 +54,7 @@ app.use((req, res, next) => {
     next(err);
 })
 
+//Start API
 app.listen(port, () => {
     console.log(`Translate API listening at http://${host}:${port}`);
 });
