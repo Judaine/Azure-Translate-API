@@ -1,9 +1,10 @@
 const axios = require('axios').default;
 const { v4: uuidv4 } = require('uuid');
+const subKey = require('../subKey/key');
 
-var subscriptionKey = "xxx";
+var subscriptionKey = subKey;
 
-exports.detectLanguage = (req, res) => {
+exports.detectLanguage = (req, res, next) => {
     var endpoint = "https://api.cognitive.microsofttranslator.com";
 
     var translateText = req.body.text;
@@ -37,4 +38,7 @@ exports.detectLanguage = (req, res) => {
         res.status = 200;
         return res.send(sendData);
     })
+    .catch(err => {
+        res.send(err.response.data);
+    });
 };

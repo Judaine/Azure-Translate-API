@@ -58,6 +58,15 @@ app.use((req, res, next) => {
     next(err);
 })
 
+//Error handling
+app.use((err, req, res, next)=>{
+  if(!err.status) {
+      let reqErr = new Error(err.response.data.message)
+      reqErr.status = 400
+  }
+  res.send(reqErr);
+});
+
 //Start API
 app.listen(port, () => {
     console.log(`Translate API listening at http://${host}:${port}`);

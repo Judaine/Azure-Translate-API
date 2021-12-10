@@ -1,11 +1,12 @@
 const { v4: uuidv4 } = require('uuid');
 const axios = require('axios');
+const subKey = require('../subKey/key');
 
-var subscriptionKey = "xxx";
+var subscriptionKey = subKey;
 var endpoint = "https://api.cognitive.microsofttranslator.com"
 var apiVersion = "?api-version=3.0"
 
-exports.dictionaryLookup = (req, res) => {
+exports.dictionaryLookup = (req, res, next) => {
     //Endpoint given by Azure Translate Cognitive service
     var endpoint = "https://api.cognitive.microsofttranslator.com";
 

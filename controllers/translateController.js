@@ -1,9 +1,10 @@
 const { v4: uuidv4 } = require('uuid');
 const axios = require('axios');
+const subKey = require('../subKey/key');
 
-var subscriptionKey = "xxx";
+var subscriptionKey = subKey;
 
-exports.translateText = (req, res) => {
+exports.translateText = (req, res, next) => {
     //Endpoint given by Azure Translate Cognitive service
     var endpoint = "https://api.cognitive.microsofttranslator.com";
 
@@ -42,9 +43,12 @@ exports.translateText = (req, res) => {
         return res.send(sendData)
         
     })
+    .catch(err => {
+            res.send(err.response.data);
+    });
 };
 
-exports.languages = (req, res) => {
+exports.languages = (req, res, next) => {
     //Endpoint given by Azure Translate Cognitive service
     var endpoint = "https://api.cognitive.microsofttranslator.com";
     //Location of where Azure Translate Cognitive service is hosted. If changed in Azure, needs to change in variable.
@@ -73,10 +77,13 @@ exports.languages = (req, res) => {
         res.status = 200;
         return res.send(sendData);
     })
+    .catch(err => {
+        res.send(err.response.data);
+    });
 };
 
 
-exports.translateToFromParams = (req, res) => {
+exports.translateToFromParams = (req, res, next) => {
     //Endpoint given by Azure Translate Cognitive service
     var endpoint = "https://api.cognitive.microsofttranslator.com";
 
@@ -115,9 +122,10 @@ exports.translateToFromParams = (req, res) => {
         return res.send(sendData)
         
     })
+    .catch(err => next(err));
 };
 
-exports.translateToParam = (req, res) => {
+exports.translateToParam = (req, res, next) => {
     //Endpoint given by Azure Translate Cognitive service
     var endpoint = "https://api.cognitive.microsofttranslator.com";
 
@@ -151,7 +159,9 @@ exports.translateToParam = (req, res) => {
         //Locate payload within the JSON object
         var sendData = response.data[0].translations[0]
         res.status = 200;
-        return res.send(sendData)
-        
+        return res.send(sendData)  
     })
+    .catch(err => {
+        res.send(err.response.data);
+    });
 };

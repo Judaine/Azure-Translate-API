@@ -1,6 +1,6 @@
 const express = require('express');
 const controller = require('../controllers/translateController');
-const {validateBody} = require('../middleware/validator');
+const {validateBody, validateResult} = require('../middleware/validator');
 
 const router = express.Router();
 
@@ -19,7 +19,7 @@ const router = express.Router();
  * @param {TranslateSchema} request.body.required - Translation JSON Object - application/json
  * @return 200 - success response - application/json
  */
-router.post('/', validateBody, controller.translateText);
+router.post('/', validateBody, validateResult, controller.translateText);
 
 /**
  * GET /translate/to/{languageTo}/{text}
